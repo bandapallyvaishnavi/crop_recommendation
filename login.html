@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crop Recommendation System</title>
+    <style>
+        body {
+            font-family: sans-serif;
+           background-image: url('login.jpg'); /* Replace with the actual path */
+      background-size: cover; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color:black;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .link {
+            text-decoration: none;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 style="color:white;">Crop Recommendation System</h2>
+
+        <div id="login-form">
+            <h3>Login</h3>
+            <form>
+                <div class="form-group">
+                    <label for="login-username"style="color:white;">Username or Email:</label>
+                    <input type="text" id="login-username" name="login-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password"style="color:white;">Password:</label>
+                    <input type="password" id="login-password" name="login-password" required>
+                </div> <button type="button" onclick="validateLogin()">Login</button>
+                <p style="color:white;">Don't have an account? <a href="#" class="link" id="signup-link">Sign Up</a></p>
+            </form>
+        </div>
+
+        <div id="signup-form" style="display: none;">
+            <h3>Sign Up</h3>
+            <form>
+                <div class="form-group">
+                    <label for="signup-username"style="color:white;">Username:</label>
+                    <input type="text" id="signup-username" name="signup-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email"style="color:white;">Email:</label>
+                    <input type="email" id="signup-email" name="signup-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password"style="color:white;">Password:</label>
+                    <input type="password" id="signup-password" name="signup-password" required>
+                </div><button type="button" onclick="validateSignup()">Sign up</button>
+
+               
+                <p style="color:white;">Already have an account? <a href="#" class="link" id="login-link">Login</a></p>
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+ function validateLogin() {
+            // Get username and password values
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+
+            // Basic validation (replace with your actual server-side logic)
+            if (username === 'your_username' && password === 'your_password') { 
+                // Redirect to crop.html
+                window.location.href = 'crop.html'; 
+            } else {
+                // Display an error message (optional)
+                alert('Invalid username or password.'); 
+            }
+        }
+        document.getElementById('signup-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('signup-form').style.display = 'block';
+        });
+
+        document.getElementById('login-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('signup-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+        });
+ function validateSignup() {
+  const username = document.getElementById('signup-username').value;
+  const email = document.getElementById('signup-email').value;
+  const password = document.getElementById('signup-password').value;
+
+  // Basic client-side validation
+  if (!username || !email || !password) {
+    alert("Please fill in all fields.");
+    return;
+  }
+
+  // Simple email validation (basic check)
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  if (!emailRegex.test(email)) {
+    alert("Invalid email address.");
+    return;
+  }
+  // Simulate successful signup (for demonstration)
+  setTimeout(function() { 
+    
+    window.location.href = 'crop.html'; 
+  }, 500); // Delay the redirect by 500 milliseconds
+}
+    </script>
+
+</body>
+</html>
